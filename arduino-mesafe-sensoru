@@ -30,7 +30,7 @@ delayMicroseconds(1000); //Zamanı ayarlıyoruz.
 digitalWrite(trig, LOW); //trig'i durduruyoruz.
 sure = pulseIn(echo, HIGH); //echo verileri alıyor.
 mesafe = (sure/2) / 29.1; //mesafeyi hesaplıyoruz.
-Serial.print("Mesafe: "); //Ekrana önce Mesafe: yazdıyoruz.
+Serial.print("Mesafe: "); //Seri Port'a önce Mesafe: yazdıyoruz. Seri Port Ekranı açmak için Araçlar>Seri Port Ekranı
 Serial.print(mesafe); //Mesafe değerini yazdırıyoruz.
 Serial.println(" cm"); //değerin sonuna cm yazmasını sağlıyoruz ki anlaşılır olsun.
 delay(250); //Zamanı ayarlıyoruz. Bunu siz değiştirebilirsiniz. Örn:500
