@@ -1,0 +1,37 @@
+
+/*
+*******************************************************************************************
+**                                                                                       **
+**                                Arduino 4. Proje                                       **
+**                                 Mesafe Sensörü                                        **
+**                                                                                       **
+**                                                                                       **
+**                                      Cihat                                            **
+**                                                                                       **
+*******************************************************************************************
+*/
+const int trig =3; //Sensörün TRİG girişini 3 nolu girişe bağladık.
+const int echo= 2; //Sensörün ECHO girişini 2 nolu girişe bağladık.
+
+int sure=0; // sure isminde değişken tanımladık.
+int mesafe=0; //mesafe isminde değişken tanımladık.
+
+void setup() {
+  
+pinMode(trig, OUTPUT); //Ses dalgasının çıkışının olacağı trig OUTPUT olarak belirledik.
+pinMode(echo, INPUT); //Dalganın geri döneceği echo'yu INPUT olarak belirledik.
+Serial.begin(9600);
+}
+
+void loop() {
+  
+digitalWrite(trig, HIGH); //Ses dalgasını aktif ediyoruz.
+delayMicroseconds(1000); //Zamanı ayarlıyoruz.
+digitalWrite(trig, LOW); //trig'i durduruyoruz.
+sure = pulseIn(echo, HIGH); //echo verileri alıyor.
+mesafe = (sure/2) / 29.1; //mesafeyi hesaplıyoruz.
+Serial.print("Mesafe: "); //Ekrana önce Mesafe: yazdıyoruz.
+Serial.print(mesafe); //Mesafe değerini yazdırıyoruz.
+Serial.println(" cm"); //değerin sonuna cm yazmasını sağlıyoruz ki anlaşılır olsun.
+delay(250); //Zamanı ayarlıyoruz. Bunu siz değiştirebilirsiniz. Örn:500
+}
